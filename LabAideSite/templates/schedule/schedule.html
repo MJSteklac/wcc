@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block name %}
+	{{ name }}
+{% endblock %}
+
+{% block content %}
+	<div class="tabbable tabs-left">
+		<ul class="nav nav-tabs" data-tabs="tabs">
+			<li><a href="#mon" data-toggle="tab">	Monday		</a></li>
+			<li><a href="#tue" data-toggle="tab">	Tuesday		</a></li>
+			<li><a href="#wed" data-toggle="tab">	Wednesday	</a></li>
+			<li><a href="#thu" data-toggle="tab">	Thursday	</a></li>
+			<li><a href="#fri" data-toggle="tab">	Friday		</a></li>
+			<li><a href="#sat" data-toggle="tab">	Saturday	</a></li>
+			<li><a href="#sun" data-toggle="tab">	Sunday		</a></li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane active" id="mon">
+				<table class="table table-striped">
+					<tr>
+						<th>Class</th><th>From</th><th>To</th>
+					</tr>
+					{% for entry in mon %}
+						<tr>
+							<td>{{ entry.class_name }}</td>
+							<td>{{ entry.start }}</td>
+							<td>{{ entry.end }}</td>
+						</tr>
+					</tr>
+					{% empty %}
+						<p>No Schedule on Mondays</p>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+			<div class="tab-pane" id="tue">
+				<table class="table table-striped">
+                                        <tr>
+                                                <th>Class</th><th>From</th><th>To</th>
+                                        </tr>
+                                        {% for entry in tue %}
+                                                <tr>
+                                                        <td>{{ entry.class_name }}</td>
+                                                        <td>{{ entry.start }}</td>
+                                                        <td>{{ entry.end }}</td>
+                                                </tr>
+                                        </tr>
+                                        {% empty %}
+                                                <p>No Schedule on Tuesdays</p>
+                                                </tr>
+                                        {% endfor %}
+                                </table>
+                        </div>
+			<div class="tab-pane" id="wed">
+				<table class="table table-striped">
+                                        <tr>
+                                                <th>Class</th><th>From</th><th>To</th>
+                                        </tr>
+                                        {% for entry in wed %}
+                                                <tr>
+                                                        <td>{{ entry.class_name }}</td>
+                                                        <td>{{ entry.start }}</td>
+                                                        <td>{{ entry.end }}</td>
+                                                </tr>
+                                        </tr>
+                                        {% empty %}
+                                                <p>No Schedule on Wednesdays</p>
+                                                </tr>
+                                        {% endfor %}
+                                </table>
+
+                        </div>
+			<div class="tab-pane" id="thu">
+				<table class="table table-striped">
+                                        <tr>
+                                                <th>Class</th><th>From</th><th>To</th>
+                                        </tr>
+                                        {% for entry in thu %}
+                                                <tr>
+                                                        <td>{{ entry.class_name }}</td>
+                                                        <td>{{ entry.start }}</td>
+                                                        <td>{{ entry.end }}</td>
+                                                </tr>
+                                        </tr>
+                                        {% empty %}
+                                                <p>No Schedule on Thursdays</p>
+                                                </tr>
+                                        {% endfor %}
+                                </table>
+
+                        </div>
+			<div class="tab-pane" id="fri">
+                                <table class="table table-striped">
+                                        <tr>
+                                                <th>Class</th><th>From</th><th>To</th>
+                                        </tr>
+                                        {% for entry in fri %}
+                                                <tr>
+                                                        <td>{{ entry.class_name }}</td>
+                                                        <td>{{ entry.start }}</td>
+                                                        <td>{{ entry.end }}</td>
+                                                </tr>
+                                        </tr>
+                                        {% empty %}
+                                                <p>No Schedule on Fridays</p>
+                                                </tr>
+                                        {% endfor %}
+                                </table>
+
+                        </div>
+			<div class="tab-pane" id="sat">
+                                <table class="table table-striped">
+                                        <tr>
+                                                <th>Class</th><th>From</th><th>To</th>
+                                        </tr>
+                                        {% for entry in sat %}
+                                                <tr>
+                                                        <td>{{ entry.class_name }}</td>
+                                                        <td>{{ entry.start }}</td>
+                                                        <td>{{ entry.end }}</td>
+                                                </tr>
+                                        </tr>
+                                        {% empty %}
+                                                <p>No Schedule on Saturdays</p>
+                                                </tr>
+                                        {% endfor %}
+                                </table>
+
+                        </div>
+			<div class="tab-pane" id="sun">
+                                <table class="table table-striped">
+                                        <tr>
+                                                <th>Class</th><th>From</th><th>To</th>
+                                        </tr>
+                                        {% for entry in sun %}
+                                                <tr>
+                                                        <td>{{ entry.class_name }}</td>
+                                                        <td>{{ entry.start }}</td>
+                                                        <td>{{ entry.end }}</td>
+                                                </tr>
+                                        </tr>
+                                        {% empty %}
+                                                <p>No Schedule on Sundays</p>
+                                                </tr>
+                                        {% endfor %}
+                                </table>
+
+                        </div>
+
+		</div>
+	</div>
+{% endblock %}
