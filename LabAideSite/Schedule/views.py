@@ -3,8 +3,8 @@ from Schedule.models import Schedule, Entry
 
 def schedule(request):
 	user = request.user
-	schedule = get_object_or_404(Schedule, pk=user.pk)
-	entries = get_list_or_404(Entry)
+	schedule = get_object_or_404(Schedule, pk=user)
+	entries = get_list_or_404(Entry, schedule=schedule)
 
 	mon = []
 	tue = []
