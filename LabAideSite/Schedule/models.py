@@ -25,4 +25,4 @@ class Entry(models.Model):
 	end = models.TimeField("To")
 
 	def __unicode__(self):
-		return unicode(schedule)
+		return unicode(self.schedule)
