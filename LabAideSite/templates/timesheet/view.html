@@ -1,31 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-	{% if dne == "True" %}
-		<p>Looks like you don't have a time sheet for this pay period</p> 
-	{% elif dne == "False" %}
-		<table class="table table-striped table-bordered">
+	<div class="alert alert-info">
+		<a href="add_entry">Would you like to create an entry?</a>
+	</div>
+	<table class="table table-striped table-bordered">
+		<tr>
+			<th>Week</th><th>Day</th><th>Class</th><th>Start</th><th>End</th>
+		</tr>
+		{% for entry in entries %}
 			<tr>
-				<th>Week</th><th>Day</th><th>Class</th><th>Start</th><th>End</th>
+				<td>{{ entry.week }} </td>
+				<td>
+					{% if entry.day == 0 %}Monday
+					{% elif entry.day == 1 %}Tuesday
+					{% elif entry.day == 2 %}Wednesday
+					{% elif entry.day == 3 %}Thursday
+					{% elif entry.day == 4 %}Friday
+					{% elif entry.day == 5 %}Saturday
+					{% elif entr.day == 6 %}Sunday
+					{% else %}Error
+					{% endif %}
+				</td>
+				<td>{{ entry.class_name }} </td>
+				<td>{{ entry.start }} </td>
+				<td>{{ entry.end }} </td>
 			</tr>
-			{% for entry in entries %}
-				<tr>
-					<td>{{ entry.week }} </td>
-					<td>
-						{% if entry.day == 0 %}Monday
-						{% elif entry.day == 1 %}Tuesday
-						{% elif entry.day == 2 %}Wednesday
-						{% elif entry.day == 3 %}Thursday
-						{% elif entry.day == 4 %}Friday
-						{% elif entry.day == 5 %}Saturday
-						{% elif entr.day == 6 %}Sunday
-						{% else %}Error
-						{% endif %}
-					</td>
-					<td>{{ entry.class_name }} </td>
-					<td>{{ entry.start }} </td>
-					<td>{{ entry.end }} </td>
-				</tr>
-			{% endfor %}
-	{% endif %}
-	<p>Would you like to <a href="add_entry">create an entry?</a></p>
+		{% endfor %}
+	</table>
 {% endblock %}
