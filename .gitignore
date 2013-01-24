@@ -1,0 +1,5 @@
+#Database
+*sqlite3
+
+#Compiled Files
+*.pyc

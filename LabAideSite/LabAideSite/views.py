@@ -13,7 +13,10 @@ def login(request):
 def _login(request):
 	username = request.POST['username']
 	password = request.POST['password']
-	user = authenticate(username=username, password=password)
+	try:
+		user = authenticate(username=username, password=password)
+	except:
+		user = None
 
 	if user is not None:
 		if user.is_active:
@@ -22,8 +25,9 @@ def _login(request):
 		else:
 			return render_to_response('login.html', {})
 
-	return render_to_response('login.html', {})
+	return render_to_response('fail.html', {})
 
+@login_required(login_url='/login/')
 def _logout(request):
 	logout_auth(request)
 	return render_to_response('success.html', {})

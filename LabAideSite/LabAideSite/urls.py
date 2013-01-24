@@ -9,8 +9,10 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'LabAideSite.views.home'), 
-    url(r'^login/', 'LabAideSite.views.login'),
-    url(r'^_login/', 'LabAideSite.views._login'),
-    url(r'^_logout/', 'LabAideSite.views._logout'),
+    url(r'^login/$', 'LabAideSite.views.login'),
+    url(r'^_login/$', 'LabAideSite.views._login'),
+    url(r'^_logout/$', 'LabAideSite.views._logout'),
+
     url(r'^schedule/', include('Schedule.urls')),
+    url(r'^timesheet/', include('TimeSheet.urls')),
 )
