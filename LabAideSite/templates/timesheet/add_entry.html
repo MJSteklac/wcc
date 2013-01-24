@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+	<form class="form-horizontal" action="_save" method="POST">
+		{% csrf_token %}
+		<div class="control-group">
+			<label class="control-label" for="week">Week</label>
+			<div class="controls">
+				<select name="week" id="week">
+					<option value=1>1</option>
+					<option value=2>2</option>
+				</select>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="day">Day</label>
+			<div class="controls">
+				<select name="day" id="day">
+					<option value=0>Monday</option>
+					<option value=1>Tuesday</option>
+					<option value=2>Wednesday</option>
+					<option value=3>Thursday</option>
+					<option value=4>Friday</option>
+					<option value=5>Saturday</option>
+					<option value=6>Sunday</option>
+				</select>
+			</div>
+		</div>
+		<div class="control-group">
+                        <label class=control-label for="class">Class</label>
+			<div class="controls">
+				<input type="text" name="class_name" id="class" required>
+			</div>
+		</div>
+		<div class="control-group">
+                        <label class=control-label for="start">Start</label>
+			<div class="controls">
+				<input type="time" name="start" id="start" required>
+			</div>
+		</div>
+		<div class="control-group">
+                        <label class=control-label for="end">End</label>
+			<div class="controls">
+				<input type="time" name="end" id="end" required>
+			</div>
+		</div>
+		<div class="control-group">
+                        <label class=control-label for="comments">Comments</label>
+			<div class="controls">
+				<textarea name="comments" id="comments"></textarea> <br /><br />
+				<input type="submit">
+			</div>
+		</div>
+	</form>
+{% endblock %}

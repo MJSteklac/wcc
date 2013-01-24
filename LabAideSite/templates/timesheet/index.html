@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+	<ul>
+		{% for period in periods %}
+			<li><a href="{{ period.period }}">{{ period.period }}, Ends on {{ period.ends_on }}</a></li>
+		{% endfor %}
+	</ul>
+{% endblock %}

@@ -1,6 +1,8 @@
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from Schedule.models import Schedule, Entry
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='/login/')
 def schedule(request):
 	user = request.user
 	schedule = get_object_or_404(Schedule, pk=user)
