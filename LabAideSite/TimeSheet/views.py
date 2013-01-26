@@ -14,7 +14,7 @@ def view(request, timesheet_id):
 	user = request.user
 
 	try:
-		timesheet = get_object_or_404(TimeSheet, pk=timesheet_id)
+		timesheet = TimeSheet.objects.get(period=timesheet_id, user=user)
 	except:
 		return render_to_response('timesheet/view.html', {'name':user.first_name, 'dne':"True"})
 
@@ -29,10 +29,10 @@ def add_entry(request, timesheet_id):
 def _save(request, timesheet_id):
 	user = request.user
 	try:
-		ts = TimeSheet.objects.get(pk=timesheet_id)
+		ts = TimeSheet.objects.get(pk=timesheet_id, user=user)
 	except:
 		pp = PayPeriod.objects.get(period=timesheet_id)
-		ts = TimeSheet(period=pp)
+		ts = TimeSheet(period=pp, user=user)
 		ts.save()
 
 	entry = Entry(timesheet=ts, week=request.POST['week'], class_name=request.POST['class_name'], day=request.POST['day'], start=request.POST['start'], end=request.POST['end'], comments=request.POST['comments'])
