@@ -21,7 +21,7 @@
 					<tr>
 						<th>Class</th><th>From</th><th>To</th>
 					</tr>
-					{% for entry in mon %}
+					{% for entry in entries.0 %}
 						<tr>
 							<td>{{ entry.class_name }}</td>
 							<td>{{ entry.start }}</td>
@@ -39,7 +39,7 @@
                                         <tr>
                                                 <th>Class</th><th>From</th><th>To</th>
                                         </tr>
-                                        {% for entry in tue %}
+                                        {% for entry in entries.1 %}
                                                 <tr>
                                                         <td>{{ entry.class_name }}</td>
                                                         <td>{{ entry.start }}</td>
@@ -57,7 +57,7 @@
                                         <tr>
                                                 <th>Class</th><th>From</th><th>To</th>
                                         </tr>
-                                        {% for entry in wed %}
+                                        {% for entry in entries.2 %}
                                                 <tr>
                                                         <td>{{ entry.class_name }}</td>
                                                         <td>{{ entry.start }}</td>
@@ -76,7 +76,7 @@
                                         <tr>
                                                 <th>Class</th><th>From</th><th>To</th>
                                         </tr>
-                                        {% for entry in thu %}
+                                        {% for entry in entries.3 %}
                                                 <tr>
                                                         <td>{{ entry.class_name }}</td>
                                                         <td>{{ entry.start }}</td>
@@ -95,7 +95,7 @@
                                         <tr>
                                                 <th>Class</th><th>From</th><th>To</th>
                                         </tr>
-                                        {% for entry in fri %}
+                                        {% for entry in entries.4 %}
                                                 <tr>
                                                         <td>{{ entry.class_name }}</td>
                                                         <td>{{ entry.start }}</td>
@@ -114,7 +114,7 @@
                                         <tr>
                                                 <th>Class</th><th>From</th><th>To</th>
                                         </tr>
-                                        {% for entry in sat %}
+                                        {% for entry in entries.5 %}
                                                 <tr>
                                                         <td>{{ entry.class_name }}</td>
                                                         <td>{{ entry.start }}</td>
@@ -133,7 +133,7 @@
                                         <tr>
                                                 <th>Class</th><th>From</th><th>To</th>
                                         </tr>
-                                        {% for entry in sun %}
+                                        {% for entry in entries.6 %}
                                                 <tr>
                                                         <td>{{ entry.class_name }}</td>
                                                         <td>{{ entry.start }}</td>

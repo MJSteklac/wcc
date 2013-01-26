@@ -1,3 +1,4 @@
+from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -26,3 +27,16 @@ class Entry(models.Model):
 
 	def __unicode__(self):
 		return unicode(self.schedule)
+
+	@staticmethod
+	def get_objects_by_day(day, schedule=None):
+		entries_by_day = []
+		entries = Entry.objects.all()
+		for entry in entries:
+			if schedule == None:
+				if entry.day==day:
+					entries_by_day.append(entry)
+			else:
+				if entry.day==day and entry.schedule==schedule:
+					entries_by_day.append(entry)
+		return entries_by_day
