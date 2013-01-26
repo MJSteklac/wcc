@@ -3,3 +3,10 @@
 
 #Compiled Files
 *.pyc
+
+#virtual environment directories
+bin/
+include/
+lib/
+local/
+lib64
