@@ -1,12 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-	<script>
-		$(document).ready(function() {
-			$('#form').ajaxForm(function() {
-				$('#id').click();
-				location.reload(true);
-			});
-		});
 	</script>
 	<div class="alert alert-info">
 		<a href="#add_entry" role="button" data-toggle="modal">Would you like to create an entry?</a>

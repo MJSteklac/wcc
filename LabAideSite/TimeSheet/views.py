@@ -27,7 +27,6 @@ def add_entry(request, payperiod):
 	user = request.user
 	return render(request, 'timesheet/add_entry.html', {'name':user.first_name})
 
-@csrf_exempt
 def _save(request, payperiod):
 	user = request.user
 	period = PayPeriod.objects.get(period=payperiod)
