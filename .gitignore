@@ -4,6 +4,7 @@
 #Compiled Files
 *.pyc
 
+<<<<<<< HEAD
 #Unused system files
 *.swp
 
@@ -13,3 +14,11 @@ local/
 bin/
 include/
 
+=======
+#virtual environment directories
+bin/
+include/
+lib/
+local/
+lib64
+>>>>>>> aae6d1b85e608eeb87ebdae713215f74d86049c9

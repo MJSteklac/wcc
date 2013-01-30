@@ -12,14 +12,15 @@ DAYS_OF_WEEK = (
 )
 
 class PayPeriod(models.Model):
-	period = models.IntegerField("Period")
+	period = models.IntegerField("Period", primary_key=True)
 	ends_on = models.DateField("Ends on")
 
 	def __unicode__(self):
 		return unicode(self.period) 
 
 class TimeSheet(models.Model):
-	period = models.ForeignKey(PayPeriod, primary_key=True)
+	period = models.ForeignKey(PayPeriod)
+	user = models.ForeignKey(User)
 	
 	def __unicode__(self):
 		return unicode(self.period)
