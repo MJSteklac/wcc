@@ -3,3 +3,13 @@
 
 #Compiled Files
 *.pyc
+
+#Unused system files
+*.swp
+
+#Virtual environment files
+lib/
+local/
+bin/
+include/
+
