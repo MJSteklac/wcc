@@ -34,5 +34,8 @@ class Entry(models.Model):
 	end = models.TimeField("To")
 	comments = models.TextField("Comments")
 
+	class Meta:
+		ordering = ['week', 'day', 'start']
+
 	def __unicode__(self):
 		return unicode(self.timesheet)

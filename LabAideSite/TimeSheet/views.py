@@ -1,6 +1,7 @@
 from django.shortcuts import render, render_to_response, get_object_or_404, get_list_or_404
 from TimeSheet.models import PayPeriod, TimeSheet, Entry
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 @login_required(login_url='/login/')
 def index(request):
@@ -26,6 +27,7 @@ def add_entry(request, payperiod):
 	user = request.user
 	return render(request, 'timesheet/add_entry.html', {'name':user.first_name})
 
+@csrf_exempt
 def _save(request, payperiod):
 	user = request.user
 	period = PayPeriod.objects.get(period=payperiod)
