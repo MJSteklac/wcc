@@ -17,10 +17,13 @@ def view(request, payperiod):
 	try:
 		timesheet = TimeSheet.objects.get(period=payperiod, user=user)
 	except:
-		return render_to_response('timesheet/view.html', {'name':user.first_name, 'dne':"True"})
+		return render_to_response('timesheet/view.html', {'name':user.first_name})
 
-	entries = get_list_or_404(Entry, timesheet=timesheet)
-	return render_to_response('timesheet/view.html', {'name':user.first_name, 'dne':"False", 'entries':entries})
+	try:
+		entries = get_list_or_404(Entry, timesheet=timesheet)
+		return render_to_response('timesheet/view.html', {'name':user.first_name, 'entries':entries})
+	except:
+		return render_to_response('timesheet/view.html', {'name':user.first_name})
 
 @login_required(login_url='/login/')
 def add_entry(request, payperiod):
@@ -38,5 +41,8 @@ def _save(request, payperiod):
 	entry.save()
 	return render_to_response('success.html', {'name':user.first_name})
 
-
+def _delete(request, primary_key, payperiod):
+	entry = get_object_or_404(Entry, pk=primary_key)
+	entry.delete()
+	return view(request, payperiod)
 

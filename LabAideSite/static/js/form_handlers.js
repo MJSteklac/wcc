@@ -43,3 +43,18 @@ $(document).ajaxSend(function(event, xhr, settings) {
         xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
     }
 });
+
+// Deletes row entry
+$(document).ready(function() {
+	$('.icon-remove').click(function() {
+		$self = $(this)
+		url = $(this).parent().attr('href');
+		$.ajax({
+			url: url,
+			type: 'POST',
+		}).done(function() {
+			$self.parent().parent().parent().remove();
+		});
+		return false;
+	});
+});

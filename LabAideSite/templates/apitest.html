@@ -1,0 +1,8 @@
+{% extends base %}
+{% block content %}
+	{% for story in stories %}
+		{{ story.title }}	<br />
+		{{ story.teaser }}	<br />
+					<br />
+	{% endfor %}
+{% endblock %}
