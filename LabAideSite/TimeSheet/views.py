@@ -6,7 +6,10 @@ from django.views.decorators.csrf import csrf_exempt
 @login_required(login_url='/login/')
 def index(request):
 	user = request.user
-	periods = get_list_or_404(PayPeriod)
+	try:
+		periods = get_list_or_404(PayPeriod)
+	except:
+		periods = []
 
 	return render_to_response('timesheet/index.html', {'name':user.first_name, 'periods':periods})
 

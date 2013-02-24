@@ -5,7 +5,10 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/login/')
 def schedule(request):
 	user = request.user
-	schedule = get_object_or_404(Schedule, pk=user)
+	try:
+		schedule = get_object_or_404(Schedule, pk=user)
+	except:
+		schedule = []
 	entries = []
 
 	for day in range(7):
