@@ -54,8 +54,18 @@
 					<div class="controls">
 						<select name="category" id="category" required>
 						{% for category in categories %}
-							<option value="{{category.name}}">{{category.name}}</option>
+							{% if category.is_project %}
+							{% else %}
+								<option value="{{category.name}}">{{category.name}}</option>
+							{% endif %}
 						{% endfor %}
+							<optgroup label="Projects">
+							{% for category in categories %}
+								{% if category.is_project %}
+									<option value="{{category.name}}">{{category.name}}</option>
+								{% endif %}
+							{% endfor %}
+							</optgroup>
 						</select>
 					</div>
 				</div>

@@ -17,6 +17,7 @@ class TimeSheet(models.Model):
 
 class Category(models.Model):
 	name = models.CharField(max_length=20, primary_key=True)
+	is_project = models.BooleanField("Is it a project?")
 	
 	def __unicode__(self):
 		return unicode(self.name)
@@ -28,6 +29,7 @@ class Entry(models.Model):
 	end = models.TimeField("To")
 	comments = models.TextField("Comments")
 	date = models.DateField("Date")
+
 	class Meta:
 		ordering = ['date', 'start']
 
