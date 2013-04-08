@@ -1,16 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-DAYS_OF_WEEK = (
-        (0, 'Monday'),
-        (1, 'Tuesday'),
-        (2, 'Wednesday'),
-        (3, 'Thursday'),
-        (4, 'Friday'),
-        (5, 'Saturday'),
-        (6, 'Sunday'),
-)
-
 class PayPeriod(models.Model):
 	period = models.IntegerField("Period", primary_key=True)
 	ends_on = models.DateField("Ends on")
