@@ -2,7 +2,7 @@
 from django.shortcuts import render, render_to_response, get_object_or_404, get_list_or_404
 
 # Import models
-from TimeSheet.models import PayPeriod, TimeSheet, Entry
+from TimeSheet.models import PayPeriod, TimeSheet, Entry, Category
 from django.contrib.auth.models import User
 
 # Import decorators
@@ -22,17 +22,18 @@ def index(request):
 @login_required(login_url='/login/')
 def view(request, payperiod):
 	user = request.user
+	try:
+		categories = get_list_or_404(Category)
+	except:
+		categories = None
 
 	try:
 		timesheet = TimeSheet.objects.get(period=payperiod, user=user)
-	except:
-		return render_to_response('timesheet/view.html', {'user':user})
-
-	try:
 		entries = get_list_or_404(Entry, timesheet=timesheet)
-		return render_to_response('timesheet/view.html', {'user':user, 'entries':entries})
 	except:
-		return render_to_response('timesheet/view.html', {'user':user})
+		entries = None
+
+	return render_to_response('timesheet/view.html', {'user':user, 'entries':entries, 'categories':categories})
 
 @login_required(login_url='/login/')
 def add_entry(request, payperiod):
@@ -42,11 +43,12 @@ def add_entry(request, payperiod):
 def _save(request, payperiod):
 	user = request.user
 	period = PayPeriod.objects.get(period=payperiod)
+	category = Category.objects.get(name=request.POST['category'])
 	ts, created = TimeSheet.objects.get_or_create(period=period, user=user)
 	if created:
 		ts.save()
 
-	entry = Entry(timesheet=ts, week=request.POST['week'], class_name=request.POST['class_name'], day=request.POST['day'], start=request.POST['start'], end=request.POST['end'], comments=request.POST['comments'])
+	entry = Entry(timesheet=ts, category=category, start=request.POST['start'], end=request.POST['end'], comments=request.POST['comments'], date=request.POST['date'])
 	entry.save()
 	return render_to_response('success.html', {'user':user})
 

@@ -25,17 +25,21 @@ class TimeSheet(models.Model):
 	def __unicode__(self):
 		return unicode(self.period)
 
+class Category(models.Model):
+	name = models.CharField(max_length=20, primary_key=True)
+	
+	def __unicode__(self):
+		return unicode(self.name)
+
 class Entry(models.Model):
 	timesheet = models.ForeignKey(TimeSheet)
-	week = models.IntegerField("Week")
-	day = models.IntegerField(choices=DAYS_OF_WEEK)
-	class_name = models.CharField(max_length=7)
+	category = models.ForeignKey(Category)
 	start = models.TimeField("From")
 	end = models.TimeField("To")
 	comments = models.TextField("Comments")
-
+	date = models.DateField("Date")
 	class Meta:
-		ordering = ['week', 'day', 'start']
+		ordering = ['date', 'start']
 
 	def __unicode__(self):
 		return unicode(self.timesheet)
