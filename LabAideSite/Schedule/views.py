@@ -14,4 +14,4 @@ def schedule(request):
 	for day in range(7):
 		entries.append(Entry.get_objects_by_day(day=day, schedule=schedule))
 
-	return render_to_response('schedule/schedule.html', {'name':user.first_name, 'entries':entries})
+	return render_to_response('schedule/schedule.html', {'user':user, 'entries':entries})

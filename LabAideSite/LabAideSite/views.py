@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/login/')
 def home(request):
 	user = request.user
-	return render_to_response('home.html', {'name':user.first_name})
+	return render_to_response('home.html', {'user':user})
 
 def login(request):
 	return render(request, 'login.html', {})
@@ -21,13 +21,24 @@ def _login(request):
 	if user is not None:
 		if user.is_active:
 			login_auth(request, user)
-			return render_to_response('success.html', {'name':user.first_name})
+			return home(request)
 		else:
-			return render_to_response('login.html', {})
+			return login(request)
 
-	return render_to_response('fail.html', {})
+	return login(request)
 
 @login_required(login_url='/login/')
 def _logout(request):
 	logout_auth(request)
-	return render_to_response('success.html', {})
+	return home(request)
+
+@login_required(login_url='/login/')
+def change_password(request):
+	return render(request, 'change_password.html', {})
+
+@login_required(login_url='/login/')
+def _change_password(request):
+	user = request.user
+	user.set_password(request.POST['password'])
+	user.save()
+	return home(request)

@@ -57,4 +57,31 @@ $(document).ready(function() {
 		});
 		return false;
 	});
+	// Password auth
+	// Compares password and confirm password
+
+	$('#ajax').submit(function() {
+		if (document.getElementById('password').value !== document.getElementById('confirm').value) {
+			alert('Passwords do not match');
+			return false;
+		}
+		alert('Password has been changed');
+	});
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
