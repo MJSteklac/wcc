@@ -8,6 +8,9 @@
 #Unused system files
 *.swp
 
+#Duplicate static driectory
+LabAideSite/static/
+
 #Virtual environment files
 lib/
 local/
