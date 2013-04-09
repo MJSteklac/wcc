@@ -3,7 +3,6 @@ from django.shortcuts import render, render_to_response, get_object_or_404, get_
 
 # Import models
 from TimeSheet.models import PayPeriod, TimeSheet, Entry, Category
-from Project.models import Users
 from django.contrib.auth.models import User
 
 # Import decorators
