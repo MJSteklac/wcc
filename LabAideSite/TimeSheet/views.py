@@ -33,7 +33,7 @@ def view(request, payperiod):
 	except:
 		entries = None
 
-	return render_to_response('timesheet/view.html', {'user':user, 'entries':entries, 'categories':categories})
+	return render(request, 'timesheet/view.html', {'user':user, 'entries':entries, 'categories':categories})
 
 @login_required(login_url='/login/')
 def add_entry(request, payperiod):
@@ -50,7 +50,7 @@ def _save(request, payperiod):
 
 	entry = Entry(timesheet=ts, category=category, start=request.POST['start'], end=request.POST['end'], comments=request.POST['comments'], date=request.POST['date'])
 	entry.save()
-	return render_to_response('success.html', {'user':user})
+	return view(request, payperiod)
 
 def _delete(request, primary_key, payperiod):
 	entry = get_object_or_404(Entry, pk=primary_key)
