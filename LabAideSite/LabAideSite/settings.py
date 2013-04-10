@@ -1,3 +1,6 @@
+# dddddddddddddddddddddddddddddddddddddddd
+# ddddddssssssssssssss
+
 # Django settings for LabAideSite project.
 
 DEBUG = True
